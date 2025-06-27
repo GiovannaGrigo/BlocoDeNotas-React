@@ -1,6 +1,7 @@
-import { View, StyleSheet, FlatList } from "react-native"
+import { View, StyleSheet, FlatList, ImageBackground, Text } from "react-native"
 import { useState, useEffect} from "react";
 import Note from "../components/Note";
+import image from '../../assets/img/notes.jpg'
 
 const noteDB = [
     {
@@ -49,6 +50,10 @@ export default function NoteList() {
     return (
         <View style={styles.container}>
             <View style={styles.noteList}>
+                <ImageBackground source={image} style={styles.image}>
+                    <Text style={styles.title}>Bloco de Notas</Text>
+                </ImageBackground>
+                
                 <FlatList
                     data={notes}
                     keyExtractor={item => `${item.id}`}
@@ -70,5 +75,16 @@ const styles = StyleSheet.create({
     noteList: {
         flex:0.9,
         backgroundColor: "white"
+    },
+
+    image: {
+        height: 200,
+        width: "100%"
+    },
+
+    title: {
+        fontSize: 35,
+        fontWeight: "bold",
+        padding: 10
     }
 })
